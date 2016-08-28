@@ -5,7 +5,11 @@ TotalWeightedCount <- as.matrix(c(TotalRawCount*(1/PopWeight)))
 rownames(TotalWeightedCount) <- Year
 colnames(TotalWeightedCount) <- "Population"
 
-LineOfBestFit<-predict(lm(TotalWeightedCount~Year))
+TotalWeight.lm<-lm(TotalWeightedCount~Year)
+
+summary(TotalWeight.lm)
+
+LineOfBestFit<-predict(TotalWeight.lm)
 
 plot(Year,TotalWeightedCount, ylim=c(0,8000), col=c("black"))
 lines(TotalWeightedCount~Year, col="grey", lwd=1)
